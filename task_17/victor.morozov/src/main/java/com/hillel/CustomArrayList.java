@@ -6,9 +6,13 @@ import java.util.Random;
 
 public class CustomArrayList implements CustomList, Iterable {
 
+  private static final int CURRENT_SIZE = -1;
+
   private int size;
+
   private String[] array;
-  public static final int BASE_SIZE = 10;
+
+  private static final int BASE_SIZE = 10;
 
   public CustomArrayList() {
     this(BASE_SIZE);
@@ -57,7 +61,6 @@ public class CustomArrayList implements CustomList, Iterable {
 
   @Override
   public void add(int index, String element) {
-    final int CURRENT_SIZE = -1;
     if (index > size || index < 0) {
       throw new IndexOutOfBoundsException();
     } else {
@@ -89,6 +92,15 @@ public class CustomArrayList implements CustomList, Iterable {
     return newArray;
   }
 
+  private void removeAtIndex(int index) {
+    int numMove = size - index - 1;
+    if (numMove > 0) {
+      System.arraycopy(array, index + 1, array, index, numMove);
+    }
+    array[size - 1] = null;
+    size--;
+  }
+
   @Override
   public boolean remove(String element) {
     if (element == null) {
@@ -107,15 +119,6 @@ public class CustomArrayList implements CustomList, Iterable {
       }
     }
     return false;
-  }
-
-  private void removeAtIndex(int index) {
-    int numMove = size - index - 1;
-    if (numMove > 0) {
-      System.arraycopy(array, index + 1, array, index, numMove);
-    }
-    array[size - 1] = null;
-    size--;
   }
 
   @Override

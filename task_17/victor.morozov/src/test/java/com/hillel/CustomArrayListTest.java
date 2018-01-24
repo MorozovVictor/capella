@@ -3,8 +3,9 @@ package com.hillel;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.Iterator;
 import org.junit.Test;
+
+import java.util.Iterator;
 
 public class CustomArrayListTest {
 
