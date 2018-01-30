@@ -2,11 +2,9 @@ package com.hillel;
 
 public class DecimalToBinary {
 
-  int dec;
-  int bin;
-  MyStack stack = new MyStack();
-
-  public int convertDecToBin(int dec) {
+  public static String convertDecToBin(int dec) {
+    StringBuilder bin = new StringBuilder();
+    MyStack stack = new MyStack();
 
     while (dec > 0) {
       stack.push(dec % 2);
@@ -14,8 +12,10 @@ public class DecimalToBinary {
     }
 
     while (!stack.isEmpty()) {
-      bin =
+      bin.append(stack.pop());
     }
+
+    return bin.toString();
   }
 
 
